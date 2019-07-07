@@ -2,7 +2,7 @@
 
 Twitter scrapper
 
-https://cryptic-stream-42501.herokuapp.com/
+http://cryptic-stream-42501.herokuapp.com/
 
 This web application scrape tweets content for a specified user by using Cheerio npm pakage.
 
