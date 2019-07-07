@@ -14,7 +14,7 @@ var PORT = process.env.PORT || 3000;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines"
+  process.env.MONGODB_URI || "mongodb://IgnacioGax:Xacn#1855@ds117093.mlab.com:17093/heroku_r8gcgwzs",{useMongoClient:true}
 );
 
 // Middleware
