@@ -55,7 +55,7 @@
                                         </div>
                                     
                                         <div class="col-2" >
-                                        <button id="submit" type="submit" class="btn btn-primary btn-block"><i class="fa fa-comment-o" aria-hidden="true"></i></button>
+                                        <button id="submit" type="submit" class="btn btn-primary btn-block"><i class="fa fa-comment-o" aria-hidden="true"></i>Comment</button>
                                         </div>
                                 </div>
                         {{#each comments}}
@@ -66,7 +66,7 @@
 
                         <div class="col-2">
                         <form  action="/deletecomment/{{../_id}}/{{@index}}" method="POST">
-                            <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                            <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete
                                 </button>
                         </form>
                         </div>
