@@ -1,14 +1,15 @@
 <!-- Masthead -->
 
 
-<!-- News & Comments Section -->
 <section class="page-section bg-primary" id="comments">
     <div class="container">
 
         <div class="row justify-content-center">
             <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                <h2 class=" mt-0">We've got what you need!</h2>
-                <hr class="divider light my-4">
+                <div class="avatar">
+                    <img src="{{scrap.[0].avatar}}" class="avatar">
+                </div>
+
                 <form class="form-inline">
   <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
   <div class="input-group mb-2 mr-sm-2">
@@ -16,7 +17,7 @@
       <div class="input-group-text">@</div>
     </div>
     <input type="text" class="form-control" id="username" placeholder="Username">
-     <button class="btn btn-primary" href="/scrap" >Search account</button>
+     <button class="btn btn-primary" id="submit" href="/scrap" >Search account</button>
   </div>
 
                 </form>
@@ -29,48 +30,65 @@
 
         <div class="scrap-container" id="scrap-container">
             {{#each scrap}}
-            <div class="row news-div rounded my-3">
-                <div class="col-sm-12 col-md-12 col-lg-10 my-1 p-4">
-                    <h6>
-                        <strong>{{title}}</strong>
-
-                    </h6>
-                </div>
-
-                <div class="col-sm-12 col-md-12 col-lg-2 my-1 p-4">
-                    <button class="btn btn-primary btn-block comments-opener" type="button" data-toggle="collapse"
-                        data-target="#collapseExample{{_id}}" aria-expanded="false" aria-controls="collapseExample">
-                        Comments
-                    </button>
-                </div>
-
-                <div class="collapse my-4 col-sm-12 col-md-12 col-lg-12" id="collapseExample{{_id}}">
-
-                    <div class="card card-body">
-                        <form action="/addcomment/{{_id}}" method="POST">
-                            <div class="form-row">
-                                <div class="form-group col-sm-12 col-md-12 col-lg-12">
-                                    <label for="comment">View Comments</label>
-                                    <textarea class="form-control" rows="3" id="comment" name="comment"
-                                        required></textarea>
-                                </div>
-                                <button id="submit" type="submit" class="btn btn-primary btn-block">Add comment</button>
-                            </div>
-                        </form>
+            <div class="news-div rounded my-3" style="padding:5vh">
+                
+                    <div class="row">
+                        <div class="col-12">
+                    <h4>{{link}}</h4>
+                        </div>
                     </div>
 
-                    {{#each comments}}
-                    <div class="card card-body my-4">
-                        <h6 class="my-4">{{this}}</h6>
-                        <form action="/deletecomment/{{../_id}}/{{@index}}" method="POST">
-                            <button type="submit" class="btn btn-danger btn-block" style="float:right;"><i
-                                    class="fas fa-trash-alt"></i>
-                                Delete</button>
+                    <div class="row">
+                        <div class="col-12">
+                    <h6><strong>{{title}}</strong></h6>
+                        </div>
+
+                    </div>
+                                        
+                    </button>
+                                        <div class="card card-body">
+                        <form action="/addcomment/{{_id}}" method="POST">
+
+                                <div class="form-group row">
+                                        <div class="col-10">
+                                        <input class="form-control"  id="comment" name="comment" placeholder="Add a comment"></input>
+                                        </div>
+                                    
+                                        <div class="col-2" >
+                                        <button id="submit" type="submit" class="btn btn-primary btn-block"><i class="fa fa-comment-o" aria-hidden="true"></i></button>
+                                        </div>
+                                </div>
+                        {{#each comments}}
+                    <div class=" row">
+                        <div class="col-10">
+                            <input class="form-control" type="text" value="{{this}}" readonly>
+                        </div>
+
+                        <div class="col-2">
+                        <form  action="/deletecomment/{{../_id}}/{{@index}}" method="POST">
+                            <button type="submit" class="btn btn-danger btn-block"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </button>
                         </form>
+                        </div>
+                        
+
                     </div>
                     <hr>
                     {{/each}}
-                </div>
+                                
+                        </form>
+                    </div>
+
+
+
+               
+
+
+
+                
+
+
+                
             </div>
             {{/each}}
         </div>

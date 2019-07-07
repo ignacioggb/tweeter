@@ -16,7 +16,13 @@ var DataSchema = new Schema({
 		required: "String is Required"
 	},
 
-	comments: Array
+	comments: Array,
+
+    avatar: {
+		type: String,
+
+	}
+
 });
 
 var Data = mongoose.model("Data", DataSchema);

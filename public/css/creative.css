@@ -24,7 +24,7 @@
   --white: #fff;
   --gray: #6c757d;
   --gray-dark: #343a40;
-  --primary: #f4623a;
+  --primary: #17a2b8;
   --secondary: #6c757d;
   --success: #28a745;
   --info: #17a2b8;
@@ -47,6 +47,20 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+
+
+.avatar img {
+  width: 150px;
+  height: 150px;
+  max-width: 150px;
+  max-height: 150px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: 5px solid rgba(255,255,255,0.5);
+}
+
 
 html {
   font-family: sans-serif;
@@ -2615,8 +2629,8 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #f4623a;
-  border-color: #f4623a;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
 .btn-primary:hover {

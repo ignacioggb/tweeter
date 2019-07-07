@@ -1,6 +1,7 @@
-$(".btn").on("click",function(){
+$("#submit").on("click",function(){
     event.preventDefault()
     var username = $("#username").val().trim();
-    jQuery.get("/scrap/"+username);
+    
+    jQuery.get("/scrap/"+username).done(()=>{location.reload();});
 })
 

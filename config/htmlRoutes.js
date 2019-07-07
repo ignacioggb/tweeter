@@ -48,20 +48,23 @@ module.exports = function (app) {
         var $ = cheerio.load(response.data);
         
         $(".content").each(function (i, element) {
-          
+      
           var scrapTitle = $(element).find("p").text().trim();
           var scrapLink = $(element).find("a").attr("href");
-          console.log(scrapTitle);
+          var scrapUser = scrapLink.replace(/\//g, "@");
+          var avatarURL = $(".ProfileCanopy-avatar").find(".ProfileAvatar-image").attr("src");
+          console.log(avatarURL);
           if (scrapTitle && scrapLink) {
             var dataToInsert = (
               {
                 title: scrapTitle,
-                link: scrapLink,
-                comments: []
+                link: scrapUser,
+                comments: [],
+                avatar: avatarURL
               }
             );
-            console.log("data to insert----");
-            console.log(dataToInsert);
+
+            //console.log(dataToInsert);
             data.create(dataToInsert, function (err, inserted) {
               if (err) {
                 // Log the error if one is encountered during the query
@@ -69,7 +72,7 @@ module.exports = function (app) {
               }
               else {
                 // Otherwise, log the inserted data
-                console.log(inserted);
+                //console.log(inserted);
               }
             });
           }
@@ -142,9 +145,10 @@ module.exports = function (app) {
   app.get("/scrap/:id", function (req, res) {
     
     ScrapeNews(req.params.id,function (data) {
-      console.log("Data Scraped - Redirect*******"+res);
+      
      //res.redirect("/");
-     res.render("homepage");
+     console.log(data);
+    res.render("homepage", { scrap: data });
     }); 
   });
 
