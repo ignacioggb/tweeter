@@ -11,13 +11,37 @@ module.exports = function (app) {
 
   var data = require("../models/data.js");
 
+
+  app.get("/saved", function (req, res) {
+
+    function saved(cb){
+      data.find({saved:true}, function (error, found) {
+      // Throw any errors to the console
+        if (error) {
+          console.log(error);
+        }
+      // If there are no errors, send the data to the browser as json
+        else { cb(found);}
+      }
+      ).sort({ _id: 1 });
+
+}
+saved(function(data){
+  console.log(data);
+  res.render("saved", { saved: data });
+});
+
+    
+ 
+});
+
   function DropScrapData(callback) {
     data.remove({}, function (err, delOK) {
       if (err) {
         throw err;
       }
       if (delOK) {
-        console.log("Collection deleted****************************************");
+        console.log("Collection deleted**********");
         data.createCollection(function () {
           callback();
         });
@@ -53,14 +77,15 @@ module.exports = function (app) {
           var scrapLink = $(element).find("a").attr("href");
           var scrapUser = scrapLink.replace(/\//g, "@");
           var avatarURL = $(".ProfileCanopy-avatar").find(".ProfileAvatar-image").attr("src");
-          console.log(avatarURL);
+
           if (scrapTitle && scrapLink) {
             var dataToInsert = (
               {
                 title: scrapTitle,
                 link: scrapUser,
                 comments: [],
-                avatar: avatarURL
+                avatar: avatarURL,
+                saved: false
               }
             );
 
@@ -163,5 +188,23 @@ module.exports = function (app) {
     res.render("404");
   });
 
+  app.post("/saved/:id", function (req, res) {
+
+    data.updateOne({ _id: mongojs.ObjectId(req.params.id) }, {saved: true } , function (error, success) {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log("saved"+req.params.id);
+      }
+    });
+   
+   // res.redirect("/#comments");
+
+
+  
+  });
+
+
 
 };
+

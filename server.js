@@ -3,10 +3,6 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 var mongoose = require("mongoose");
 
-
-
-
-
 // var db = require("./models");
 
 var app = express();
@@ -14,7 +10,7 @@ var PORT = process.env.PORT || 3000;
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://user:123password@ds117093.mlab.com:17093/heroku_r8gcgwzs",{useMongoClient:true}
+  process.env.MONGODB_URI || "mongodb://user:123password@ds117093.mlab.com:17093/heroku_r8gcgwzs"
 );
 
 // Middleware
@@ -42,7 +38,7 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-// Starting the server, syncing our models ------------------------------------/
+// Starting the server, syncing our models ------/
 
 app.listen(PORT, function () {
   console.log(

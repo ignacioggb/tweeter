@@ -4,37 +4,15 @@
 <section class="page-section bg-primary" id="comments">
     <div class="container">
 
-        <div class="row justify-content-center">
-            <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                <div class="avatar">
-                    <img src="{{scrap.[0].avatar}}" class="avatar">
-                </div>
-
-                <form class="form-inline">
-  <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
-  <div class="input-group mb-2 mr-sm-2">
-    <div class="input-group-prepend">
-      <div class="input-group-text">@</div>
-    </div>
-    <input type="text" class="form-control" id="username" placeholder="Username">
-     <button class="btn btn-primary" id="submit" href="/scrap" >Search account</button>
-  </div>
-
-                </form>
-                 
-               
-                <hr>
-            </div>
-
-        </div>
+<h1>SAVED</h1>
 
         <div class="scrap-container" id="scrap-container">
-            {{#each scrap}}
+            {{#each saved}}
             <div class="news-div rounded my-3" style="padding:5vh">
                 
                     <div class="row">
                         <div class="col-12">
-                            <btn class="btn btn-primary save" data-id="{{_id}}"+><i class="fa fa-bookmark-o" aria-hidden="true" ></i></btn>
+                           
                     <h4>{{link}}</h4>
                         </div>
                     </div>

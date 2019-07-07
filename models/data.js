@@ -20,7 +20,10 @@ var DataSchema = new Schema({
 
     avatar: {
 		type: String,
+	},
 
+	saved: {
+		type: Boolean
 	}
 
 });
